@@ -2,7 +2,7 @@ const Joi = require('@hapi/joi');
 
 const authticationWithRefreshToken = (body) =>{
     const schema = Joi.object({
-        Refresh_Token : Joi.string().required()
+        refresh_token : Joi.string().required()
     })
     return schema.validate(body).error;
 }

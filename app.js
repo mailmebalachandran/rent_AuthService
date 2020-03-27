@@ -12,7 +12,7 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(cors());
-app.use('/authservice', authRoutes);
+app.use('/api/authservice', authRoutes);
 app.use(error);
 
 winston.add(new winston.transports.File({filename:"logAuth.log"}));
