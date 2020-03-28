@@ -18,7 +18,7 @@ app.use(error);
 winston.add(new winston.transports.File({filename:"logAuth.log"}));
 winston.add(new winston.transports.MongoDB({db: process.env.DB_CONNECTION}));
 
-mongoose.connect(process.env.DB_CONNECTION, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() =>{
         console.log("DB Connected");
         winston.info("DB Connected");
