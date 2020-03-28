@@ -5,7 +5,7 @@ const userValidation = require('../validation/authValidation');
 const authenticateUser = async (req, res) => {
     let accessToken, refreshToken;
     if ((req.body != null || req.body != undefined) && req.body.hasOwnProperty('_id')) {
-        jwt.sign({ user: req.body }, process.env.JWT_ACCESS_PRIVATE_KEY, { expiresIn: "5d" }, (err, token) => {
+        jwt.sign({ user: req.body }, process.env.JWT_ACCESS_PRIVATE_KEY, { expiresIn: "5m" }, (err, token) => {
             accessToken = token;
         });
         jwt.sign({ user: req.body }, process.env.JWT_REFRESH_PRIVATE_KEY, { expiresIn: "5d" }, (err, token) => {
@@ -37,7 +37,7 @@ const authenticateWithRefreshToken = async (req, res) => {
         return res.status(400).send({ message: validationResult.details[0].message });
     const authData = await jwt.decode(req.body.refresh_token);
     if (authData != null || authData != undefined) {
-        jwt.sign({ user: authData.user }, process.env.JWT_ACCESS_PRIVATE_KEY, { expiresIn: "5d" }, 
+        jwt.sign({ user: authData.user }, process.env.JWT_ACCESS_PRIVATE_KEY, { expiresIn: "5m" }, 
         (err, token) => {
             accessToken = token;
 
