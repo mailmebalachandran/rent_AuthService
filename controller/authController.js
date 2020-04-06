@@ -92,7 +92,6 @@ const verifyToken = (req, res) => {
 };
 
 const decodeToken = (req, res) => {
-  console.log(req.body);
   try {
     jwt.verify(
       req.body.access_token,
